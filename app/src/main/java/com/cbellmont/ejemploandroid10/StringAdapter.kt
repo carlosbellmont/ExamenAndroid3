@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 
 class StringAdapter(var stringList : List<String>) : RecyclerView.Adapter<StringAdapter.StringViewHolder>()  {
@@ -22,7 +23,9 @@ class StringAdapter(var stringList : List<String>) : RecyclerView.Adapter<String
 
     override fun onBindViewHolder(holder: StringViewHolder, position: Int) {
         holder.textView.text = stringList[position]
-        holder.textView.textTextView2 = stringList[position]
+
+        if (position == stringList.size -1)
+            holder.textView.setBackgroundColor(ContextCompat.getColor(holder.textView.context, R.color.colorPrimary))
     }
 }
 
